@@ -115,7 +115,7 @@ func (v *Var) Parse(field reflect.StructField) error {
 		return nil
 	}
 
-	tagParams := strings.Split(tag, ",")
+	tagParams := strings.Split(tag, " ")
 	for _, tagParam := range tagParams {
 		var key, value string
 
