@@ -95,6 +95,10 @@ func (e *Env) SetPrefix(prefix string) {
 // Parse parses the config struct into valid Vars
 func (e *Env) Parse() error {
 	for _, name := range e.FieldNames() {
+		if !e.Value.FieldByName(name).CanSet() {
+			continue
+		}
+	
 		field, _ := e.Value.Type().FieldByName(name)
 		v, err := NewVar(field)
 
